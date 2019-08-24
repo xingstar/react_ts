@@ -1,4 +1,65 @@
-8.17---下午=================
+########3项目已完成点
+
+# webpack打包开发环境
+  ## webpack-dev-server配置需要把index.html提取到dist
+  ## historyApiFallback: true,为了解决刷新页面404
+  ## externals
+
+# 简单路由
+  ## 实现子路由
+  ## BrowserRouter
+    Suspense
+        Switch
+            Route 
+
+# 函数式组件实现登录
+  ## 保存用户名和密码
+  ## 退出登录（清除loaclstorage的值）
+  需要注意的点
+  ## input如果写了value属性，就会要求写onChange方法或设为只读
+
+# ts添加类型（会一点，还不熟）
+
+# mobx-react-lite刚刚跑通
+  注意的点
+  ## 需要依赖 mobx
+  ## 安装时不需要 @types/xxxxx
+
+
+########还未搞明白的点
+# 函数式编程 state怎么用
+# mobx-react-lite是替换 state的？
+# 路由参数变化，监听？改变页面 ？
+# 放哪里每次都重渲染，放哪里不会？
+
+
+##########还未实践的点
+# 没有用Ant
+# 没有实时分析webpack的打包情况
+# 没有使用mobx进行状态管理
+# tslint
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+8.17---下午讲解=================
 1.webpack流程
 2.entry -> loader(tsx) -> awesome-typescript-loader -> css
 也可以使用babel-loader处理tsx文件，但是要配置周边引用的包

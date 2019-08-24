@@ -10,15 +10,19 @@
     "babel-loader": "^8.0.6",
     "css-loader": "^3.2.0",
     "html-webpack-plugin": "^3.2.0",
+    "scripty": "^1.9.1",
     "source-map-loader": "^0.2.4",
     "style-loader": "^1.0.0",
     "ts-loader": "^6.0.4",
-    "typescript": "^3.5.3"
+    "typescript": "^3.5.3",
+    "webpack-bundle-analyzer": "^3.4.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "devwatch": "webpack-dev-server --mode development",
-    "dev": "webpack"
+    "client:server": "scripty",
+    "client:dev": "scripty",
+    "profile": "webpack --profile --json > stats.json",
+    "analyz": "NODE_ENV=development npm_config_report=true npm run client:server"
   },
   "author": "",
   "license": "ISC",
@@ -27,8 +31,11 @@
     "@types/react": "^16.9.2",
     "@types/react-dom": "^16.8.5",
     "@types/react-router-dom": "^4.3.4",
+    "mobx": "^5.13.0",
+    "mobx-react-lite": "^1.4.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
+    "react-hooks-fetch": "^0.10.0",
     "react-router-dom": "^5.0.1",
     "webpack": "^4.39.2",
     "webpack-cli": "^3.3.6",

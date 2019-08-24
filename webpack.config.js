@@ -1,5 +1,6 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 module.exports = {
     entry:"./src/web/index.tsx",
     output:{
@@ -10,7 +11,11 @@ module.exports = {
     mode:"development",
     // devtool:'source-map',
     resolve:{
-        extensions:['.webpack.js','.ts','.tsx','.js']
+        extensions:['.ts','.tsx','.js'],
+        alias: {
+            '@components': path.resolve(__dirname,'src/web/components'), // 最后这里加不加/都是可以的
+            '@pages':  path.resolve(__dirname,'src/web/pages/')
+        }
     },
     module:{
         rules:[
@@ -30,13 +35,16 @@ module.exports = {
                 //     }
                 // },
                 exclude: /node_modules/
-              }
+              },
         ]
     },
     plugins:[
         new HtmlWebpackPlugin({
             inject: true,
             template: './src/web/index-dev.html'
+        }),
+        new BundleAnalyzerPlugin({
+            analyzerPort:8999
         })
     ],
     externals: {

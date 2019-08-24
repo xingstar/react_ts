@@ -22,7 +22,7 @@ function App(){
                 </Switch>
             </React.Suspense>
             </div>
-            hellosdfas
+            这是页脚
         </div>
         
     );
