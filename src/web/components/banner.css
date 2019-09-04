@@ -1,0 +1,11 @@
+.nav-wrap{
+    display: inline-block;
+    list-style: none;
+    line-height: 40px;
+}
+.nav-wrap li{
+    display: inline-block;
+    list-style: none;
+    font-size: 16px;
+    padding: 5px 15px;
+}

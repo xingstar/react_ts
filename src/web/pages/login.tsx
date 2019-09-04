@@ -1,6 +1,8 @@
 import * as React from "react";
-import { Redirect } from 'react-router-dom';
+import { Redirect,RouteComponentProps } from 'react-router-dom';
 const {useState, useEffect} = React;
+import { Form, Input, Button, Checkbox } from 'antd';
+import LoginForm from '@components/form';
 interface IUser {
     lablename: string
 }
@@ -51,23 +53,39 @@ const InputDemo = () => {
     )
 };
 
-const Greeting = () => {
+const antdForm = () => {
+    const formItemLayout = {
+        labelCol: { span: 4 },
+        wrapperCol: { span: 8 },
+    };
+    const formTailLayout = {
+        labelCol: { span: 4 },
+        wrapperCol: { span: 8, offset: 4 },
+    };
+}
+
+
+const Greeting = (routerProps:RouteComponentProps) => {
     useEffect(() => {
         document.title = "login";
     })
     const testFn1 = () => {
         console.log('testFn');
     }
+    console.log('login渲染');
+    
+    console.log('location',location)
     return (
-        <div>
-            <h4>欢迎欢迎!!!!sssss!</h4>
+        <>
+            {/* <h4>欢迎欢迎!!!!sssss!</h4>
             <p>login</p>
             <div>
                 <InputDemo></InputDemo>
-            </div>
-
-        </div>
+            </div> */}
+            <LoginForm></LoginForm>
+        </>
     );
 }
 
 export default Greeting;
+

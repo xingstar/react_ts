@@ -4,9 +4,10 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 module.exports = {
     entry:"./src/web/index.tsx",
     output:{
-        path: path.join(__dirname,'./dist'),
+        path: path.join(__dirname, "./dist/assets"),
+        //path: path.join(__dirname,'./dist'),
         publicPath: '/', //  跟node结合需要声明一个publicPath 这个地方有待研究 具体什么意思
-        filename: 'scripts/[name].bundle.js'
+        //filename: 'scripts/[name].bundle.js'
     },
     mode:"development",
     // devtool:'source-map',
@@ -22,7 +23,21 @@ module.exports = {
             {
                 test:/\.css/,
                 use:[
+                    'style-loader',
                     'css-loader'
+                ]
+            },
+            {
+                test:/\.png|jpg|jpeg|gif$/,
+                use:[
+                    {
+                        loader:'url-loader',
+                        options:{
+                            limit: 1024,
+                            name:'[name].[ext]',
+                            outputPath: 'images/', // 这个如果不在这里写一个publicPath，则是以整体的output的publicPath为准，输出到的路径， 这里是在 dist/assets/images下
+                        }
+                    }
                 ]
             },
             {
@@ -43,14 +58,16 @@ module.exports = {
             inject: true,
             template: './src/web/index-dev.html'
         }),
-        new BundleAnalyzerPlugin({
-            analyzerPort:8999
-        })
+        // 这是webpack打包实时监控的插件
+        // new BundleAnalyzerPlugin({
+        //     analyzerPort:8999
+        // })
     ],
     externals: {
         "react": 'React', // '包名':'全局变量' 
         "react-dom": 'ReactDOM',
-        'react-router-dom':'ReactRouterDOM'
+        'react-router-dom':'ReactRouterDOM',
+        'antd': 'antd'
     },
      // 配置开发服务器, 并配置自动刷新
     devServer: {

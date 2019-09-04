@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Input } from 'antd';
 const { useState, useEffect } = React;
 
 // const PeopleList = (props:{news: string}) => { // 如果使用ts-loader处理的话，这里需要加类型
@@ -16,7 +17,7 @@ const PeopleList = () => {
         <>
             <ul>
                 <li>高级领袖</li>
-                <li><input type="text" onChange={CheckName} value={nameState} ></input></li>
+                <li><Input type="text" onChange={CheckName} value={nameState} ></Input></li>
             </ul>
         </>
     )

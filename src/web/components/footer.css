@@ -1,0 +1,11 @@
+.footer-wrap{
+    background:#000;
+    color: #eeeeee;
+    font-size: 16px;
+    height: 50px;
+    width: 100%;
+}
+.center{
+    text-align: center;
+    line-height: 50px;
+}

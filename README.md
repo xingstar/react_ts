@@ -27,22 +27,79 @@
 
 
 ########还未搞明白的点
-# 函数式编程 state怎么用
+# 函数式编程 state怎么用  
+  1、使用 const {useState, useEffect} = React; 
+  2、在函数式组件里const [nameState, setState]  = useState('Hello');
+  useState是初始化数据
+  3、就可以使用setState进行nameState的值了    
+  setState((e.target).value);（这句是可以写在input的onChange事件里了）
+    // 示例
+    import * as React from 'react';
+    import { Input } from 'antd';
+    const { useState, useEffect } = React;
+    const PeopleList = () => {    
+        const [nameState, setState]  = useState('Hello');
+        // console.log('nameState=',nameState, 'setState:',setState);
+        const CheckName = (e:React.ChangeEvent<HTMLInputElement>) => {
+            setState((e.target).value);
+        }
+        useEffect(() => {
+            document.title = "part2"
+        })
+        return (
+            <>
+                <ul>
+                    <li>高级领袖</li>
+                    <li><Input type="text" onChange={CheckName} value={nameState} ></Input></li>
+                </ul>
+            </>
+        )
+    }
+    export default PeopleList;
 # mobx-react-lite是替换 state的？
+    是类似于redux的
 # 路由参数变化，监听？改变页面 ？
 # 放哪里每次都重渲染，放哪里不会？
+    如果路由不加oberver()方法进行包裹，路由跳转的时候，token就死掉了（这个token是什么）
+    <BrowserRouter />里面的加上withrouter 组件就会重新渲染； 在<BrowserRouter>组件外的就不会重新渲染
 
 
 ##########还未实践的点
-# 没有用Ant
-# 没有实时分析webpack的打包情况
-# 没有使用mobx进行状态管理
+# 没有用Antd
+    npm install 安装的包是3.22版本的，但是cdn引入的是4.0版本的，所以导致在创建Form的时候，提示Form.create() is not a function。原因就是4.0版本的Form确实没有create方法.使用cdn的antd需要引入moment.js文件
+
+# 没有实时分析webpack的打包情况  
+    使用的就是 webpack-bundle-analyzer包的BundleAnalyzerPlugin方法，然后在plugins  new一个实例指定一个端口就可以
+         new BundleAnalyzerPlugin({
+             analyzerPort:8999
+         })
+# 没有使用mobx进行状态管理， 与redux的区别
 # tslint
 
 
 
+###########2019-8-25
+# suspense的switch是未解决什么问题而生的
+# 一级路由如果使用map的方式遍历 二级路由展示不出来  是因为有子路由的exact属性不能设置true，只能是false
 
 
+
+########2019-09-03
+# tsconfig.json中如果想要使用paths,则需要配置baseUrl
+{
+    "compilerOptions": {
+      "baseUrl": ".", // 这里
+      "outDir": "./dist/",
+      "noImplicitAny": false,
+      "module": "commonjs",
+      "target": "es5",
+      "jsx": "react",
+      "allowJs": true,
+      "paths": { // 这里 要配合使用
+        "@components/*": ["web/components/*"]
+      }
+    }
+  }
 
 
 
@@ -98,3 +155,6 @@ BrowserRouter
 13.tslint 
 14.pages 页面 《---- 一个路由
    + components 组件
+
+
+使用observer是因为管理的token，不然token永远都是死的

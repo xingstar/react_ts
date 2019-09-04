@@ -1,0 +1,17 @@
+ul, li{
+    list-style: none;
+    margin: 0;
+}
+p{
+    margin: 0;
+}
+.main{
+    min-height: calc( 100vh - 100px);
+    font-size: 14px;
+    background-image:url("../images/bg.png");
+    background-size:contain;
+}
+.ant-input{
+    width: 150px;  
+    margin: 5px 10px;
+}

@@ -28,7 +28,7 @@ const Demo = observer((routerProps: RouteComponentProps<HomeRouterProps>) => {
       {/* <h2 className="nav">{ydstore.str}</h2> */}
       <TodoList todos={store.todos} toggleTodo={store.toggleTodo} />
       <Footer remaining={store.remainingTodos} total={store.todos.length} />
-      <h3>{store.id}</h3>
+      <h3>对对对{store.id}</h3>
       <input type="button" value="测试异步请求" onClick={() => store.test()} />
     </div>
   );
